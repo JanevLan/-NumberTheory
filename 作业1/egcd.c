@@ -1,3 +1,4 @@
+//参照A Computational Introduction to Number Theory and Algebra P81
 #include <stdio.h>
 int egcd(int a, int b)
 {
