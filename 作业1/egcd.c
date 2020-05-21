@@ -4,8 +4,8 @@ int egcd(int a, int b)
     int r=a,r1=b,e=0;
     while(r&1==0 && r1&1==0)
     {
-        r=r/2;
-        r1=r1/2;
+        r=r>>1;
+        r1=r1>>1;
         e++;
     }
     a=r;
@@ -13,19 +13,19 @@ int egcd(int a, int b)
 
     int  s=1,t=0,s1=0,t1=1;
     while(r1!=0)
-        {
+    {
 
        while(r&1==0)
         {
-          r=r/2;
-          if(s&1==0 && t&1==0) {s=s/2;t=t/2;}
-          else {s=(s+b)/2;t=(t-a)/2; }
+          r=r>>1;
+          if(s&1==0 && t&1==0) {s=s>>1;t=t>>1;}
+          else {s=(s+b)>>1;t=(t-a)>>1; }
         }
        while(r1&1==0)
         {
-          r1=r1/2;
-          if(s1&1==0 && t1&1==0) {s1=s1/2;t1=t1/2;}
-          else {s1=(s1+b)/2;t1=(t1-a)/2; }
+          r1=r1>>1;
+          if(s1&1==0 && t1&1==0) {s1=s1>>1;t1=t1>>1;}
+          else {s1=(s1+b)>>1;t1=(t1-a)>>1; }
         }
 
        if(r1<r)
@@ -39,7 +39,7 @@ int egcd(int a, int b)
        r1=r1-r;
        s1=s1-s;
        t1=t1-t;
-       }
+   }
 
        return r<<e;
 
