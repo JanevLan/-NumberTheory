@@ -9,7 +9,6 @@ int multiply(int a,int b)
    }
    
    return mul;
-
 }
 
 void main()
