@@ -1,44 +1,21 @@
-#include <stdio.h>
-
-int encode(int num)
+int multiply(int a,int b)
 {
-    int a,b,c=1,d=0;
-    while (1)
-    {
-        if(num==0)
-        {
-            return d;
-        }
-        a=num%2;
-        d+=c*a;
-        num/=2;
-        c*=10;
-    }
-}
+   int mul=0;
+   int i=0;
+   while(b!=0){
+   if(b%2==1)  //flag标志位为1才累加
+   mul+=a<<i;
+   b>>=1; i++;
+   }
+   
+   return mul;
 
-int mul(int e,int num)
-{
-    int x,total=0,i=0;
-    while (1)
-    {
-        if(num==0)
-        {
-            return total;
-        }
-        x=num%10;
-        total+=e*pow(2,i)*x;
-        i++;
-        num/=10;
-    }
-    
 }
 
 void main()
 {
-    int a,b;
-    printf("Please Input a and b:");
-    scanf("%d%d",&a,&b);
-    printf("%d",mul(a,encode(b)));
-    printf("\n");
-    system("pause");
+    int x,y;
+    printf("Please Input x and y:");
+    scanf("%d%d",&x,&y);
+    printf("%d",multiply(x,y));
 }
