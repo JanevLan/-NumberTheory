@@ -1,1 +1,36 @@
+#如果n为质数，由费马小定理有 x = ap-2 (mod p)
+def gcd(a,b):
+    while b:
+        a, b = b, int(a) % int(b)
+    return a
 
+print("Please Input a:")
+a = input()
+print("please Input n:")
+n = input()
+if (gcd(a, n) != 1):
+    print("无解,a与n不是互数")
+x = int(a)**(int(n)-2) % int(n)     
+print("a模n的乘法逆元为：" + str(x) )
+
+#如果n不是质数，可以用扩展欧几里得
+def gcd(a,b):
+    while b:
+        a, b = b, int(a) % int(b)
+    return a
+
+def egcd(a,b):
+    if(b==0):
+        return a,1,0
+    gcd,x,y = egcd(b,int(a) % int(b))
+    return gcd,y,x - (int(a)//int(b)) * int(y)
+
+
+print("Please Input a:")
+a = input()
+print("please Input n:")
+n = input()
+if (gcd(a, n) != 1):
+    print("无解,a与n不是互数")
+gcd,x,y = egcd(a,n)
+print("a模n的乘法逆元为：" + str(x) )
