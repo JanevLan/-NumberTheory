@@ -1,0 +1,31 @@
+int ModExponentiation(int a,int b,int c)
+{
+   int M_E=1;
+   int pre=a%c;
+   int r;
+
+   //处理幂为2的0次方的情况
+   if(b!=0){
+       if(b%2==1)  //b的flag标志位为1才累乘
+       M_E=pre;
+       b>>=1;
+   }
+
+   //处理幂为2的1到logb次方的情况
+   while(b!=0){
+        r=(pre*pre)%c;//记录当前位的求模结果
+        pre=r;        //记录上一位的求模结果
+        if(b%2==1)
+        M_E=(M_E*r)%c;
+        b>>=1;
+   }
+   return M_E;
+}
+
+void main()
+{
+    int x,y,z;
+    printf("Please Input x and y and z:");
+    scanf("%d%d%d",&x,&y,&z);
+    printf("%d",ModExponentiation(x,y,z));
+}
