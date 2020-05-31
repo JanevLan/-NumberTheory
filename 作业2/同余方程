@@ -1,1 +1,34 @@
+def egcd(a,b):
+    if(b==0):
+        return a,1,0
+    gcd,x,y = egcd(b,int(a) % int(b))
+    return gcd,y,x - (int(a)//int(b)) * int(y)
+
+print("Please Input a:")
+a = int(input())
+print("Please Input b:")
+b = int(input())
+print("Please Input m:")
+m = int(input())
+Arr=[]
+gcd,x,y = egcd(a, m)
+g,z,w = egcd(a, b)
+
+if (gcd == 1):    #方程只有一个解
+    print("同余方程的解为：")
+    print( (x*b) % m)
+else:
+    if(gcd == g):
+        if(gcd % b):    #方程有gcd个解
+            i=1
+            x0=x*(b//gcd) % m
+            while(i <= g):
+                Arr.append((x0+(i-1)*m//g) % m )
+                i=i+1
+            print("同余方程的解为：")
+            print(Arr)
+        else:
+            print("方程无解")
+    else:
+        print("方程无解")
 
