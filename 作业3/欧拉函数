@@ -1,1 +1,19 @@
+def cal(a,b):
+  if a == 0:
+    return b
+  elif b == 0 :
+    return a;
+  reminder = a%b;
+  return cal(b,reminder)
+
+
+def phi(n):
+  counter = 1
+  for i in range(2, n):
+    if cal(i, n) == 1:
+      counter+=1
+  return counter
+
+
+print(phi(10))
 
