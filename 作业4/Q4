@@ -1,0 +1,33 @@
+# 平方子群的阶等于群的阶的一半
+# 立方子群的阶等于群的阶或者群的阶的三分之一
+def Group(p):
+  group = []
+  i = 1
+  while (i < p):
+    group.append(i)
+    i = i + 1
+  return group
+
+
+def QuadraticGroup(p):
+  group = []
+  i = 1
+  while (i < p):
+    group.append(pow(i ,2)%p)
+    i = i + 1
+  return list(set(group))
+
+
+def CubedGroup(p):
+  group = []
+  i = 1
+  while (i < p):
+    group.append(pow(i, 3) % p)
+    i = i + 1
+  return list(set(group))
+
+
+p = int(input())
+print("群：" + str(Group(p)) +" 阶：" + str(len(Group(p))))
+print("平方子群:"+str(QuadraticGroup(p)) + " 阶：" + str(len(QuadraticGroup(p))))
+print("立方子群:"+str(CubedGroup(p)) + " 阶：" + str(len(CubedGroup(p))))
