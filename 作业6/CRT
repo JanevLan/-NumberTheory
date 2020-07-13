@@ -1,1 +1,8 @@
-
+def CRT(M_,P_):
+    M=1
+    x=0
+    for i in range(0,len(P_)):
+        M=M*P_[i] 
+    for j in range(0,len(P_)):
+        x=(x+M_[j]*pow(M/P_[j],(P_[j])-1)) % M
+    return x
