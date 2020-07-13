@@ -1,0 +1,32 @@
+def Generator(p):
+    res=[]
+    for i in range(2,p):
+        if is_primitive_root(i,p):
+            res.append(i)
+    return res
+def gcd(a,b):
+    if a % b == 0:
+        return b
+    else:
+        return gcd(b,a%b)
+def is_primitive_root(a,p):
+    flist = prime_factors_list(p-1)
+    for f in flist:
+        if pow(a,int((p-1)/f),p) == 1:
+            return False
+    return True
+def prime_factors_list(n):
+    list = []
+    isprime = True
+    for i in range(2,n+1):
+        for j in range(2,i):
+            if gcd(i,j) == 1:
+                continue
+            else:
+                isprime = False
+                break
+        if isprime:
+            list.append(i)
+        else:
+            isprime = True
+    return list
